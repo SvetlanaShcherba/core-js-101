@@ -285,10 +285,8 @@ function getSecondItems(arr) {
 function propagateItemsByPositionIndex(arr) {
   let newArr = arr.map((item, index) => String(`${item},`).repeat(index + 1));
   newArr = newArr.join(',').split(',').filter((el) => el !== '');
-  return newArr.split('');
+  return newArr.map((elem) => ((elem === 'null') ? null : elem));
 }
-
-
 /**
  * Returns the 3 largest numbers from the specified array
  *
@@ -302,8 +300,9 @@ function propagateItemsByPositionIndex(arr) {
  *   [ 1,2,3,4,5,6,7,8,9,10 ] => [ 10, 9, 8 ]
  *   [ 10, 10, 10, 10 ] => [ 10, 10, 10 ]
  */
-function get3TopItems(/* arr */) {
-  throw new Error('Not implemented');
+function get3TopItems(arr) {
+  const newArr = arr.sort((a, b) => b - a);
+  return newArr.slice(0, 3);
 }
 
 
@@ -430,8 +429,8 @@ function findAllOccurrences(arr, item) {
  *    [1, 2, 3, 4, 5]                   => '1,2,3,4,5'
  *    ['rock', 'paper', 'scissors']     => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 
@@ -461,8 +460,21 @@ function toStringList(/* arr */) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  function compareFIO(a, b) {
+    if (a.country < b.country) {
+      if ((a.city < b.city)) {
+        return -1;
+      }
+    }
+    if (a.country > b.country) {
+      if (a.city > b.city) {
+        return 1;
+      }
+    }
+    return 0;
+  }
+  return arr.sort(compareFIO);
 }
 
 /**
@@ -483,8 +495,12 @@ function sortCitiesArray(/* arr */) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  let arr = new Array(n);
+  arr.fill(new Array(n), 0, n);
+  arr.map((el) => el.fill(0, 0, n));
+  arr.map((el, i) => el.fill(1, -n, - n + 1));
+  return arr;
 }
 
 /**
@@ -515,8 +531,8 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  return Array.from(new Set(arr));
 }
 
 /**
