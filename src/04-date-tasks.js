@@ -1,7 +1,7 @@
 /* *******************************************************************************************
  *                                                                                           *
  * Please read the following tutorial before implementing tasks:                              *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Numbers_and_dates#Date_object
+ * https://developer.mozilla.org,en-US,docs/Web/JavaScript/Guide/Numbers_and_dates#Date_object
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date     *
  *                                                                                           *
  ******************************************************************************************* */
@@ -19,8 +19,27 @@
  *    'Tue, 26 Jan 2016 13:48:02 GMT' => Date()
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
-function parseDataFromRfc2822(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromRfc2822(value) {
+  // const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May',
+  //   'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  // const year = value.match(/\d{4}/);
+  // const day = value.match(/\d{2}/);
+  // const time = value.match(/\d\d:\d\d:\d\d/).join().split(':');
+  // const hours = time[0];
+  // const min = time[1];
+  // const sec = time[2];
+  // const gmt1 = value.match(/+\d{2}/).join();
+  // const gmt2 = value.match(/GMT/).join();
+  // let data;
+  // if (gmt2) {
+  //   hours = hours - 3;
+  // }
+  // if (gmt1) {
+  //   hours = hours - 3;
+  // }
+  // data = new Date(`${year}`, `${month}`, `${day}`, `${hours}`, `${min}`, `${sec}`);
+  const data = new Date(value);
+  return data.getTime();
 }
 
 /**
@@ -34,8 +53,9 @@ function parseDataFromRfc2822(/* value */) {
  *    '2016-01-19T16:07:37+00:00'    => Date()
  *    '2016-01-19T08:07:37Z' => Date()
  */
-function parseDataFromIso8601(/* value */) {
-  throw new Error('Not implemented');
+function parseDataFromIso8601(value) {
+  const data = new Date(value);
+  return data.getTime();
 }
 
 
